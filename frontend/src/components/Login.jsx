@@ -7,7 +7,7 @@ function Login(){
                 <div id='header' className="row col-12 text-center">
                     <h2>AssoManage</h2>
                 </div>
-                <div className="row col-12 col-md-5 col-lg-3 text-center mt-5 mx-auto p-5 shadow rounded-4 bg-light " id="loginForm">
+                <div className="row col-12 col-md-5 col-lg-5 text-center mt-5 mx-auto p-5 shadow rounded-4 bg-light " id="loginForm">
                     <form>
                         <label className="form-laber" htmlFor="userName">Nom d'utilisateur</label>
                         <input className="form-control" type="text" />
