@@ -49,3 +49,29 @@ body {
 #header i{
   font-size: 1.2rem;
 }
+
+#count div{
+  height: 9rem;
+}
+
+#count h4{
+  margin-top: 2rem
+}
+
+#count h5{
+  margin-top: 1rem;
+}
+
+#transaction{
+  height: 6rem;
+}
+
+#member, #cash, #transaction{
+  border: solid 1px #adadad;
+}
+
+.graph{
+  width: 300px;
+  height: 300px;
+  margin: auto;
+}
