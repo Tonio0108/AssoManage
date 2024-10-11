@@ -50,6 +50,10 @@ body {
   font-size: 1.2rem;
 }
 
+.container{
+  height: 83vh;
+  overflow-y: auto;
+}
 #count div{
   height: 9rem;
 }
@@ -74,4 +78,12 @@ body {
   width: 300px;
   height: 300px;
   margin: auto;
+}
+
+#info{
+  margin-top: 3rem;
+}
+
+#photo{
+  height: 11rem;
 }
