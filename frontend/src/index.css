@@ -54,8 +54,8 @@ body {
   margin-top: 10px;
 }
 
-.container{
-  height: 83vh;
+.container, .container-fluid{
+  height: 84vh;
   overflow-y: auto;
 }
 #count div{
@@ -92,7 +92,7 @@ body {
   height: 11rem;
 }
 
-label{
+label, .modal-container2 label{
   margin-top: 1rem;
 }
 
@@ -120,6 +120,15 @@ label{
   text-align: center;
 }
 
+.modal-container2 {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 350px;
+  height: 550px;
+  text-align: center;
+}
+
 .modal-buttons {
   margin-top: 20px;
 }
@@ -128,4 +137,32 @@ label{
   margin: 5px;
   padding: 10px 20px;
   font-size: 16px;
+}
+
+#coinDash{
+  max-height: 95%;
+}
+
+#cotisationDash, #transactionDash{
+  border: solid 1px #b8b8b8;
+}
+
+#cotaTitle{
+  text-transform: uppercase;
+  background-color: #00582c;
+}
+
+#cotaFooter{
+  text-transform: uppercase;
+  background-color: #750800;
+}
+
+#cotaTab,#transTab{
+  max-height: 72vh;
+}
+
+
+#transTitle{
+  text-transform: uppercase;
+  background-color: #704300;
 }

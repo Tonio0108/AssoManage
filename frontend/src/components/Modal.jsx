@@ -1,4 +1,4 @@
-import React from 'react';
+
 import PropTypes from 'prop-types';
 
 function Modal({ title, message, isVisible, onConfirm, onClose }) {
