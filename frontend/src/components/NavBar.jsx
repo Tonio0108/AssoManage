@@ -12,7 +12,7 @@ function NavBar() {
           </Link>
         </div>
         <div className="col-3 col-md-2 col-lg-2 shadow mx-auto rounded bg-light">
-          <Link to='/member' className={`btn btn-outline-dark col-12 ${router.pathname === '/member' ? 'active' : ''}`}>
+          <Link to='/member' className={`btn btn-outline-dark col-12 ${router.pathname === '/member' || router.pathname === '/member/administration'  ? 'active' : ''}`}>
             <i className="bi bi-people rounded-circle"></i>
           </Link>
         </div>

@@ -17,7 +17,7 @@ function Member(){
 
     return(
         <> 
-            <div className = "container mt-5 over">
+            <div className = "container mt-5">
 
                 {
                     page === 'list' && (

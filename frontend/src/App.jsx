@@ -11,6 +11,7 @@ import Header from './components/Header';
 import Dashboard from './components/dashboard';
 import Member from './components/Member';
 import Cota from './components/Cota';
+import Admin from './components/Administration';
 function App() {
 
   const hideNavbar = location.pathname === '/login';
@@ -26,6 +27,7 @@ function App() {
           <Route path='/'>
             <Route path='' element = { <Dashboard /> }/>
             <Route path='/member' element = { <Member /> } />
+            <Route path='/member/administration' element = { <Admin /> } />
             <Route path='/cota' element = { <Cota /> } />
           </Route>
         </Routes>

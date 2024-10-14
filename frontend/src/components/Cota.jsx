@@ -2,7 +2,7 @@ import { useState } from "react"
 
 function Cota(){
 
-    const montant   = 10000
+    const montant   = 0
     const nonPaye = 0
 
     const [isFormVisible,setFormVisible] = useState(false)
@@ -24,10 +24,10 @@ function Cota(){
                     </div>
                 </div>
                 <div id="coinDash" className="row">
-                    <div id="cotisationDash" className="col-sm-12 col-md-12 col-lg-6 mx-auto mt-2">
+                    <div id="cotisationDash" className="col-sm-12 col-md-12 col-lg-5 mx-auto mt-2">
                         <Cotisation montant={montant} nonPaye={nonPaye} />
                     </div>
-                    <div id="transactionDash" className="col-sm-12 col-md-12 col-lg-5 mx-auto mt-2">
+                    <div id="transactionDash" className="col-sm-12 col-md-12 col-lg-6 mx-auto mt-2">
                         <Transaction  />
                     </div>
                 </div>
@@ -62,9 +62,9 @@ function Cotisation({montant, nonPaye}){
                         </thead>
                         <tbody>
                             <tr>
-                                <td className= { 'bg-success text-light' }>ANDRIATSIAFORITRARIVO Gildascio Marie Antonio</td>
-                                <td className= { 'bg-success text-light' }>10000</td>
-                                <td className= { 'bg-success text-light' }>payé</td>
+                                <td className= { 'bg-secondary text-light' }>ANDRIATSIAFORITRARIVO Gildascio Marie Antonio</td>
+                                <td className= { 'bg-secondary text-light' }>10000</td>
+                                <td className= { 'bg-secondary text-light' }>payé</td>
                             </tr>
                         </tbody>
                     </table>
@@ -84,7 +84,7 @@ function Transaction(){
 
     return(
         <>
-            <div id = "transTitle" className="row mt-2 text-light">
+            <div id = "transTitle" className="row text-light">
                 <div className="col-12 text-center">
                     <h5 >Transactions : </h5>
                 </div>
@@ -104,11 +104,16 @@ function Transaction(){
                         </thead>
                         <tbody>
                             <tr>
-                                <td className = { 'bg-primary text-light' }>revenu</td>
-                                <td className= { 'bg-primary text-light' }>cotisation</td>
-                                <td className= { 'bg-primary text-light' }>10000</td>
-                                <td className= { 'bg-primary text-light' }>rakoto</td>
-                                <td className= { 'bg-primary text-light' }>01 decembre 2024</td>
+                                <td className = { 'bg-success text-light' }>revenu</td>
+                                <td className= { 'bg-success text-light' }>cotisation</td>
+                                <td className= { 'bg-success text-light' }>10000</td>
+                                <td className= { 'bg-success text-light' }>ANDRIATSIAFORITRARIVO Gildascio Marie Antonio</td>
+                                <td className= { 'bg-success text-light' }>01 decembre 2024</td>
+                                <td className= { 'bg-success text-light' }>
+                                    <button className="btn btn-sm btn-light">
+                                        <i className="bi bi-pencil"></i>
+                                    </button>
+                                </td>
                             </tr>
                             
                         </tbody>
@@ -121,6 +126,9 @@ function Transaction(){
 
 
 function Form({ isVisible, onConfirm, onClose }) {
+
+    const [ descri, setDescri ] = useState('cotisation')
+    const [ selectValue, setSelectValue ] = useState('')
     if (!isVisible) return null;
   
     return (
@@ -138,11 +146,19 @@ function Form({ isVisible, onConfirm, onClose }) {
 
           <div className="row">
             <label htmlFor="description">Déscription :</label>
-            <select name="description" className="form-select">
-                <option value="revenue">revenue</option>
-                <option value="depense">dépense</option>
+            <select onChange = {(e) => setSelectValue(e.target.value)} name="description" className="form-select">
+                <option value="cotisation">cotisation</option>
+                <option value="autre">autre</option>
             </select>
           </div>
+
+        {
+            selectValue === 'autre' && (
+            <div className="row">
+                <input type="text" name="description2" className="form-control"/>
+            </div>
+            )
+        }
 
           <div className="row">
             <label htmlFor="montant">Montant :</label>
