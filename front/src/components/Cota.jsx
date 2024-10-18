@@ -310,7 +310,7 @@ function Form({ isVisible, onConfirm, onClose }) {
     const [type, setType] = useState('revenue');
   
     if (!isVisible) return null;
-  
+    
     const handleSubmit = async () => {
       const data = {
         type,
@@ -410,5 +410,5 @@ function Form({ isVisible, onConfirm, onClose }) {
       </div>
     );
   }
-  
+// descri
 export default Cota;
