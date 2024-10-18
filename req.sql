@@ -1,6 +1,7 @@
 COMMIT;
 
 CREATE DATABASE IF NOT EXISTS assomanage;
+USE assomanage;
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
