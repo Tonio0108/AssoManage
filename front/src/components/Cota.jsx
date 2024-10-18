@@ -37,47 +37,70 @@ function Cota(){
         </>
     )
 }
+function Cotisation({ montant }) {
+    const [transactions, setTransactions] = useState([]);
+    const [nonPaye, setNonPaye] = useState(0); // État pour le montant non payé
 
-function Cotisation({montant, nonPaye}){
-    return(
+    useEffect(() => {
+        const fetchTransactions = async () => {
+            try {
+                const response = await Axios.get('http://localhost:3000/api/transactions'); // Remplace par l'URL de ton API
+                const cotisations = response.data.filter(transaction => transaction.description === 'cotisation');
+
+                setTransactions(cotisations);
+                
+                // Calculer le montant non payé
+                const totalPaye = cotisations.reduce((acc, transaction) => acc + (transaction.status === 'payé' ? transaction.montant : 0), 0);
+                setNonPaye(montant - totalPaye); // Calculer le montant non payé
+            } catch (error) {
+                console.error('Erreur lors de la récupération des transactions:', error);
+            }
+        };
+
+        fetchTransactions();
+    }, [montant]); // Montant comme dépendance si besoin de mettre à jour les non payés
+
+    return (
         <>
-            <div id = "cotaTitle" className="row text-light">
+            <div id="cotaTitle" className="row text-light">
                 <div className="col-4">
-                    <h5 >cotisation : </h5>
+                    <h5>cotisation : </h5>
                 </div>
                 <div className="col-8 text-end">
-                    <h5>{ montant } MGA / mois </h5>
+                    <h5>{montant} MGA / mois</h5>
                 </div>
             </div>
 
-            <div id = "cotaTab" className="row overflow-scroll">
+            <div id="cotaTab" className="row overflow-scroll">
                 <div className="row">
                     <table className="table table-responsive text-center">
                         <thead>
                             <tr>
                                 <th>Nom et prénoms</th>
-                                <th>montant</th>
-                                <th>status</th>
+                                <th>Montant</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td className= { 'bg-secondary text-light' }>ANDRIATSIAFORITRARIVO Gildascio Marie Antonio</td>
-                                <td className= { 'bg-secondary text-light' }>10000</td>
-                                <td className= { 'bg-secondary text-light' }>payé</td>
-                            </tr>
+                            {transactions.map((transaction) => (
+                                <tr key={transaction.id}> {/* Assure-toi que chaque transaction a un ID unique */}
+                                    <td className={'bg-secondary text-light'}>{transaction.expediteur}</td>
+                                    <td className={'bg-secondary text-light'}>{transaction.montant}</td>
+                                    <td className={'bg-secondary text-light'}>payé</td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <div id = "cotaFooter" className="row text-light">
+            <div id="cotaFooter" className="row text-light">
                 <div className="col-12 text-end">
-                    <h5 >Non payé : { nonPaye } </h5>
+                    <h5>Non payé : {nonPaye} MGA</h5>
                 </div>
             </div>
         </>
-    )
+    );
 }
 
 function EditForm({ isVisible, onConfirm, onClose, transaction }) {

@@ -32,16 +32,18 @@ function App() {
 
   return (
     <BrowserRouter>
+      {/* Affiche le NavBar et Header uniquement si l'utilisateur est authentifié */}
       {isAuthenticated && <NavBar handleLogout={handleLogout} />}
-      {isAuthenticated && <Header  handleLogout={handleLogout} />}
+      {isAuthenticated && <Header handleLogout={handleLogout} />}
       <Routes>
-        <Route path='/login' element={ isAuthenticated ? <Navigate to="/dashboard" /> :  <Login setIsAuthenticated={setIsAuthenticated} />} />
+        <Route path='/login' element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route path='/register' element={<Register />} />
         {/* Redirection vers la page de connexion si l'utilisateur n'est pas authentifié */}
         <Route path='/dashboard' element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
         <Route path='/member' element={isAuthenticated ? <Member /> : <Navigate to="/login" />} />
         <Route path='/member/administration' element={isAuthenticated ? <Admin /> : <Navigate to="/login" />} />
         <Route path='/cota' element={isAuthenticated ? <Cota /> : <Navigate to="/login" />} />
+        {/* Redirection vers la page de connexion par défaut si non authentifié */}
         <Route path='/' element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>

@@ -295,6 +295,17 @@ router.put('/transactions/:date', async (req, res) => {
     });
     });
 
+// Endpoint pour récupérer toutes les transactions
+router.get('/transactions', async (req, res) => {
+  try {
+      const [rows] = await con.execute("SELECT * FROM transactions WHERE description = 'cotisation'");
+      res.json(rows);
+  } catch (error) {
+      console.error('Erreur lors de la récupération des transactions :', error);
+      res.status(500).json({ message: 'Erreur du serveur' });
+  }
+});
+
 
 // Autres routes peuvent être ajoutées ici
 
